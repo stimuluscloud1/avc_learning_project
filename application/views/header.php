@@ -24,8 +24,8 @@
         <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-brand">
-                    <a href="index.html">
-                        <img src="../assets/images/logo-icon.svg" alt="Mplify Logo" class="img-responsive logo">
+                    <a href="index">
+                        <img src="<?php echo base_url('assets/');?>images/logo-icon.svg" alt="Mplify Logo" class="img-responsive logo">
                         <span class="name">mplify</span>
                     </a>
                 </div>
@@ -115,12 +115,12 @@
                                     </li>
                                     <li class="dropdown">
                                         <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                            <img class="rounded-circle" src="../assets/images/user-small.png" width="30" alt="">
+                                            <img class="rounded-circle" src="<?php echo base_url('assets/');?>images/user-small.png" width="30" alt="">
                                         </a>
                                         <div class="dropdown-menu animated flipInY user-profile">
                                             <div class="d-flex p-3 align-items-center">
                                                 <div class="drop-left m-r-10">
-                                                    <img src="../assets/images/user-small.png" class="rounded" width="50" alt="">
+                                                    <img src="<?php echo base_url('assets/');?>images/user-small.png" class="rounded" width="50" alt="">
                                                 </div>
                                                 <div class="drop-right">
                                                     <h4>Samuel Morriss</h4>
@@ -129,12 +129,12 @@
                                             </div>
                                             <div class="m-t-10 p-3 drop-list">
                                                 <ul class="list-unstyled">
-                                                    <li><a href="page-profile.html"><i class="icon-user"></i>My
+                                                    <li><a href="profile"><i class="icon-user"></i>My
                                                             Profile</a></li>
                                                     <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
                                                     <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a href="page-login.html"><i class="icon-power"></i>Logout</a>
+                                                    <li><a href="logout"><i class="icon-power"></i>Logout</a>
                                                     </li>
                                                 </ul>
                                             </div>

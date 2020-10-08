@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Login extends CI_Controller {
 	
 	public function __construct()
     {
@@ -23,21 +23,25 @@ class Welcome extends CI_Controller {
 			$result=$this->common->resultCount($table, $data);
 			
 			if($result > 0){
-				$resultValue['message']="Login Successfully.";
 				$this->session->set_flashdata('login_success', 'Login Successfully');
 				$this->session->set_userdata(array(
 					'admin_session' => $data['userEmail']
 				));
-				$this->load->view('login', $resultValue);				
+				$this->load->view('login');				
 						
 			}else{
-				$resultValue['message']="Either Email or Password is Invalid, Please Check Again.";
-				$this->session->set_flashdata('login_success', 'Error message.');
-				$this->load->view('login', $resultValue);
+				$this->session->set_flashdata('login_success', 'Either Email or Password is Invalid, Please Check Again');
+				$this->load->view('login');
 			}
 
 		}
 
 		$this->load->view('login');
+	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect($this->index);
 	}
 }

@@ -68,9 +68,9 @@
                                         <script>
                                             window.setTimeout(function() {
 
-                                                window.location.href = "https://www.google.co.in";
+                                                window.location.href = "index";
 
-                                            }, 3000);
+                                            }, 2000);
                                         </script>
                                     <?php
                                         } else {
