@@ -56,6 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 /** Controller Dashboard **/
 $route['index']='dashboard/index';
 $route['profile']='dashboard/adminProfile';
+$route['settings']='dashboard/adminProfileSetting';
+$route['update-password']='dashboard/adminUpdatePassword';
 
 /** Controller Login **/
 $route['logout']='login/logout';

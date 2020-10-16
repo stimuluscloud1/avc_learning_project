@@ -131,8 +131,8 @@
                                                 <ul class="list-unstyled">
                                                     <li><a href="profile"><i class="icon-user"></i>My
                                                             Profile</a></li>
-                                                    <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
-                                                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
+                                                            <li><a href="update-password"><i class="icon-key"></i>Update Password</a></li>
+                                                    <li><a href="settings"><i class="icon-settings"></i>Settings</a></li>
                                                     <li class="divider"></li>
                                                     <li><a href="logout"><i class="icon-power"></i>Logout</a>
                                                     </li>
