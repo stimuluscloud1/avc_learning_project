@@ -8,9 +8,10 @@
                 <li class="middle">
                     <a href="#courses" class="has-arrow"><i class="icon-graduation"></i><span>Courses</span></a>
                     <ul>
-                        <li><a href="category.php">Category</a></li>
+                        <li><a href="<?php echo base_url('media')?>">Media</a></li>
+                        <li><a href="<?php echo base_url('category')?>">Category</a></li>
                         <!-- <li><a href="instructor.php">Instructor</a></li> -->
-                        <li><a href="courses.php">Course</a></li>
+                        <li><a href="<?php echo base_url('courses')?>">Course</a></li>
                         <li><a href="lession.php">Lession</a></li>
                         <li><a href="subscribed-user.php">Subscribed</a></li>
                     </ul>

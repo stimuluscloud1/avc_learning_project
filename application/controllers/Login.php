@@ -21,11 +21,22 @@ class Login extends CI_Controller {
 			$data['userPassword']=md5($this->input->post('userPassword'));
 			
 			$result=$this->common->resultCount($table, $data);
-			
+		
 			if($result > 0){
+
+				$condition=array(
+					'userEmail'=>$data['userEmail']
+				  );
+				  $order1='';
+				  $order2='';
+				  $dataR= $this->common->dataList($table,$condition,$order1,$order2);
+				  $adminID=$dataR->id;
+
+
 				$this->session->set_flashdata('login_success', 'Login Successfully');
 				$this->session->set_userdata(array(
-					'admin_session' => $data['userEmail']
+					'admin_session' => $data['userEmail'],
+					'admin_id' => $adminID
 				));
 				$this->load->view('login');				
 						

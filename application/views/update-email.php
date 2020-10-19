@@ -21,20 +21,16 @@
                             <form class="form-auth-small" id="basic-form" method="POST" action="" validate>
                                 <div class="row clearfix">
                                     <div class="col-lg-12 col-md-12">
-                                        <h6>Change Password</h6>
+                                        <h6>Change Email ID</h6>
                                         <div class="form-group">
-                                            <input name="currentPassword" class="form-control" type="password" placeholder="Current Password" required />
+                                            <input name="currentemail" class="form-control" type="email" placeholder="Enter Current Email ID" required />
                                         </div>
                                         <div class="form-group">
-                                            <input name="password" id="password" class="form-control" type="password" onkeyup='check();' placeholder="New Password" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" name="confirm_password" class="form-control" id="confirm_password" onkeyup='check();' placeholder="Confirm Password" required />
-                                            <span id='message'></span>
+                                            <input name="email" class="form-control" type="email" placeholder="Enter New Email ID" required />
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" name="submit" id="updateBtn" class="btn btn-primary btn-sm" value="Update" onkeyup='check();'>
+                                <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Update">
                                 
                                 <a href="profile"><input type="button" class="btn btn-default" value="Cancel"></a>
                             </form>
@@ -69,30 +65,6 @@
     </div>
 </div>
 </div>
-<script>
-    var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.onload = function() {
-            URL.revokeObjectURL(output.src) // free memory
-        }
-    };
-</script>
-<script>
-    var check = function() {
-        if (document.getElementById('password').value ==
-            document.getElementById('confirm_password').value) {
-            document.getElementById('message').style.color = 'green';
-            document.getElementById('updateBtn').disabled = '';
-            document.getElementById('message').innerHTML = 'Confirm Password Matched';
-        } else {
-
-            document.getElementById('updateBtn').disabled = 'true';
-            document.getElementById('message').style.color = 'red';
-            document.getElementById('message').innerHTML = 'Confirm Password Not Matched';
-        }
-    }
-</script>
 <?php include('js.php'); ?>
 </body>
 

@@ -9,39 +9,66 @@ class Dashboard extends CI_Controller
     parent::__construct();
     $this->load->model('common');
 
-    /* Admin Session */
-    if ($this->session->userdata('admin_session') != true) {
+    if ($this->session->userdata('admin_session') != true) {      /* Admin Session */
       redirect("login");
     }
   }
 
-  /** Admin Dashboard Page */
   public function index()
+  /** Admin Dashboard Page */
   {
     $this->load->view('index');
   }
 
-  /** Admin Profile Page **/
   public function adminProfile()
+  /** Admin Profile Page **/
   {
-    $table='admin';
-    $condition=array(
+    $table = 'admin';
+    $condition = array(
       'userEmail' => $this->session->userdata('admin_session')
     );
-    $order1='';
-    $order2='';
-    $this->common->dataList($table,$condition,$order1,$order2);
+    $order1 = '';
+    $order2 = '';
+    $this->common->dataList($table, $condition, $order1, $order2);
     $this->load->view('profile');
   }
 
-  /** Admin Profile Page Setting **/
   public function adminProfileSetting()
+  /** Admin Profile Page Setting **/
   {
+    if($this->input->post('submit'))
+    {
+      $table = 'admin';
+
+        $condition=array(
+          'userEmail'=>$this->session->userdata('admin_session')
+        );
+        $order1='';
+        $order2='';
+        $dataR= $this->common->dataList($table,$condition,$order1,$order2);
+        $adminID=$dataR->id;
+        
+        $table1='admininfo';
+        $data['image']='123.png';
+        $data['userFname']=$this->input->post('userFname');
+        $data['userLname']=$this->input->post('userLname');
+        $data['gender']=$this->input->post('gender');
+        $data['dob']=$this->input->post('dob');
+        $data['mobileNo']=$this->input->post('mobileNo');
+        $data['addressL1']=$this->input->post('addressL1');
+        $data['addressL2']=$this->input->post('addressL2');
+        $data['city']=$this->input->post('city');
+        $data['state']=$this->input->post('state');
+        $data['country']=$this->input->post('country');
+        $data['admin_id']=$adminID;
+        $result = $this->common->insertData($table1, $data);
+        
+    }
     $this->load->view('profile-setting');
   }
 
-  /** Admin Update Password **/
   public function adminUpdatePassword()
+  /** Admin Update Password **/
   {
     if ($this->input->post('submit')) {
       $table = 'admin';
@@ -63,5 +90,10 @@ class Dashboard extends CI_Controller
       }
     }
     $this->load->view('update-password');
+  }
+
+  public function adminUpdateEmail()
+  {
+    $this->load->view('update-email');
   }
 }

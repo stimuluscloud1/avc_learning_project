@@ -8,18 +8,27 @@ class Common extends CI_Model {
     }
     public function insertData($table,$data = array()){
         $this->db->insert($table,$data);
-        return $this->db->insert_id();
+ //       return $this->db->insert_id();
+ echo $this->db->affected_rows();
     }
     public function dataList($table,$condition=array(),$order1,$order2){
+        $data = $this->db->order_by($order1,$order2)->get_where($table,$condition)->row();
+            return $data;
+    }
+
+    public function dataListF($table,$condition=array(),$order1,$order2){
         $data = $this->db->order_by($order1,$order2)->get_where($table,$condition);
             return $data;
     }
+
     public function dataUpdate($table,$condition=array(),$set=array()){
         $this->db->where($condition);
         $this->db->set($set);
         $this->db->update($table);
         return true;
     }
+
+
 }
 
 ?>

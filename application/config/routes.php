@@ -58,6 +58,18 @@ $route['index']='dashboard/index';
 $route['profile']='dashboard/adminProfile';
 $route['settings']='dashboard/adminProfileSetting';
 $route['update-password']='dashboard/adminUpdatePassword';
+$route['update-email']='dashboard/adminUpdateEmail';
+
+/** Controller Category **/
+$route['category/(:any)/(:num)']='category/index/$1/$1';
+$route['getCategory']='category/getCategory';
+
+/** Controller Courses **/
+$route['courses']='courses/index';
+$route['course-edit']='courses/course_edit';
 
 /** Controller Login **/
 $route['logout']='login/logout';
+
+/** Controller Category **/
+$route['media']='media/index';
