@@ -7,10 +7,7 @@ class Login extends CI_Controller {
     {
 		parent::__construct();
 		$this->load->model('common');
-		
-        // if ($this->session->userdata() != true or $this->session->userdata('Role') != 'admin') {
-        //     redirect("welcome");
-        //}
+	
     } 
 
 	public function index()

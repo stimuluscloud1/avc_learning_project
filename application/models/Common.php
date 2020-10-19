@@ -8,8 +8,8 @@ class Common extends CI_Model {
     }
     public function insertData($table,$data = array()){
         $this->db->insert($table,$data);
- //       return $this->db->insert_id();
- echo $this->db->affected_rows();
+       return $this->db->insert_id();
+       
     }
     public function dataList($table,$condition=array(),$order1,$order2){
         $data = $this->db->order_by($order1,$order2)->get_where($table,$condition)->row();

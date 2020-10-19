@@ -66,7 +66,9 @@ $route['getCategory']='category/getCategory';
 
 /** Controller Courses **/
 $route['courses']='courses/index';
-$route['course-edit']='courses/course_edit';
+
+/** Controller Lession **/
+$route['lession']='lession/index';
 
 /** Controller Login **/
 $route['logout']='login/logout';

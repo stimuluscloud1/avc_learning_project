@@ -12,7 +12,7 @@
                         <li><a href="<?php echo base_url('category')?>">Category</a></li>
                         <!-- <li><a href="instructor.php">Instructor</a></li> -->
                         <li><a href="<?php echo base_url('courses')?>">Course</a></li>
-                        <li><a href="lession.php">Lession</a></li>
+                        <li><a href="<?php echo base_url('lession')?>">Lession</a></li>
                         <li><a href="subscribed-user.php">Subscribed</a></li>
                     </ul>
                 </li>
