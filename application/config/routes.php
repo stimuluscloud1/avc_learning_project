@@ -65,7 +65,7 @@ $route['category/(:any)/(:num)']='category/index/$1/$1';
 $route['getCategory']='category/getCategory';
 
 /** Controller Courses **/
-$route['courses']='courses/index';
+$route['courses/(:any)/(:num)']='courses/index/$1/$1';
 
 /** Controller Lession **/
 $route['lession']='lession/index';
@@ -75,3 +75,11 @@ $route['logout']='login/logout';
 
 /** Controller Category **/
 $route['media']='media/index';
+
+/** Controller Blog **/
+$route['new-blog']='blog/newBlog';
+$route['blog-category']='blog/newCategory';
+$route['blog-list']='blog/listBlog';
+$route['blog-list/(:any)/(:num)']='blog/listDelete/$1/$1';
+$route['blog-detail/(:num)']='blog/blogDetail/$1';
+$route['blog-edit/(:num)']='blog/blogEdit/$1';

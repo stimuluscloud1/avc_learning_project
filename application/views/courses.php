@@ -12,14 +12,15 @@
                 </div>
             </div>
         </div>
+
         <div class="row clearfix">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Add Course</h2>
-                    </div>
-                    <div class="body">
-                        <form id="basic-form" method="post" validate>
+                        <button class="btn btn-primary" style="float:right;" onclick="myFunction()"><i class="fa fa-plus"></i> Add Course</button>
+                    </div><br>
+                    <div class="body" id="myDIV" style="display: none;">
+                        <form id="basic-form" method="post" enctype="multipart/form-data" validate>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
@@ -35,7 +36,7 @@
                                             <?php
                                             foreach ($categoryList as $data) {
                                             ?>
-                                                <option value="<?php echo $data->id; ?>"><?php echo $data->category; ?></option>
+                                                <option value="<?php echo $data->category; ?>"><?php echo $data->category; ?></option>
                                             <?php
                                             }
                                             ?>
@@ -48,14 +49,14 @@
                                 <div class="col-lg-6">
                                     <div class="form-group m-t-20 m-b-20">
                                         <label for="thumbnail">Upload Thumbnail</label>
-                                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="courseThumbnail" required>
+                                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" name="icon" required>
                                         <small id="fileHelp" class="form-text text-muted">Max 2MB File</small>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="video">Introductory video</label><br>
-                                        <input type="file" name="courseIntroVideo[]" class="file_multi_video" accept="video/*" required><br><br>
+                                        <input type="file" name="video" class="file_multi_video" accept="video/*" required><br><br>
                                         <video width="300" controls>
                                             <source src="mov_bbb.mp4" id="video_here">
                                             Your browser does not support HTML5 video.
@@ -80,61 +81,79 @@
                                 </div>
                             </div>
                         </form>
+                        <hr>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="header">
-                        <h2>Course List</h2>
-                    </div>
-                    <div class="body">
-                        <div class="table-responsive">
-                            <table class="table table-hover m-b-0 c_list">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th>Course Name</th>
-                                        <th>Category</th>
-                                        <th>Course</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                    <div class="row clearfix">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="header">
+                                    <h2>Course List</h2>
+                                </div>
+                                <div class="body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th>Course Name</th>
+                                                    <th>Category</th>
+                                                    <th>Course</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($courseList as $list) { ?>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="../assets/images/xs/avatar1.jpg" class="rounded avatar" alt="">
+                                                            <p class="c_name"><?php echo $list->courseTitle; ?></p>
+                                                        </td>
+                                                        <td>
+                                                            <span><?php echo $list->courseCategory; ?></span>
+                                                        </td>
+                                                        <td class="project-title">
+                                                            <h6><a href="javascript:void(0);"><?php echo $list->courseDescription; ?></a></h6>
+                                                        </td>
+                                                        <td><?php if ($list->active == '1') {
+                                                                echo '<span class="badge badge-success">Active</span>';
+                                                            } elseif ($list->active == '2') {
+                                                                echo '<span class="badge badge-danger">Inctive</span>';
+                                                            }
+                                                            ?>
+                                                        </td>
+                                                        <td>
+                                                            <a href="<?php echo base_url('courses/view/') . $list->id; ?>"><button type="button" class="btn btn-primary" title="View Course"><i class="icon-eyeglasses"></i></button></a>
+                                                            <a href="<?php echo base_url('courses/edit/') . $list->id; ?>"><button type="button" class="btn btn-primary" title="Edit Course"><i class="fa fa-edit (alias)"></i></button></a>
+                                                            <a href="<?php echo base_url('courses/add-lession/') . $list->id; ?>"><button type="button" class="btn btn-primary" title="Add Lession"><i class="icon-plus"></i></button></a>
+                                                            <a href="<?php echo base_url('courses/delete/') . $list->id; ?>"><button type="button" class="btn btn-primary" title="Delete"><i class="fa fa-trash-o text-default"></i></button></a>
+                                                            <?php if ($list->active == '1') {
+                                                        
+                                                                ?>
+                                                            <a href="<?php echo base_url('courses/disable/') . $list->id; ?>"><button type="button" class="btn btn-primary" title="Disable"><i class="fa fa-times-circle"></i></button></a>
 
-                                <?php foreach($courseList as $list){ ?>
-                                    <tr>
-                                        <td>
-                                            <img src="../assets/images/xs/avatar1.jpg" class="rounded avatar" alt="">
-                                            <p class="c_name"><?php echo $list->courseTitle;?></p>
-                                        </td>
-                                        <td>
-                                            <span><?php echo $list->courseCategory;?></span>
-                                        </td>
-                                        <td class="project-title">
-                                            <h6><a href="javascript:void(0);"><?php echo $list->courseDescription;?></a></h6>
-                                        </td>
-                                        <td><?php if($list->active == '1'){
-                                            echo '<span class="badge badge-success">Active</span>';
-                                        }
-                                        elseif($list->active == '2'){
-                                            echo '<span class="badge badge-danger">Inctive</span>';
-                                        }
-                                            ?>
-                                        </td>
-                                        <td>
-                                            <a href="course-view.php"><button type="button" class="btn btn-primary" title="View Course"><i class="icon-eyeglasses"></i></button></a>
-                                            <a href="course-edit"><button type="button" class="btn btn-primary" title="Edit Course"><i class="fa fa-edit (alias)"></i></button></a>
-                                            <a href="lession.php"><button type="button" class="btn btn-primary" title="Add Lession"><i class="icon-plus"></i></button></a>
-                                            <a href="#"><button type="button" class="btn btn-primary" title="Delete"><i class="fa fa-trash-o text-default"></i></button></a>
-                                            <a href="#"><button type="button" class="btn btn-primary" title="Disable"><i class="fa fa-times-circle"></i></button></a>
-                                        </td>
-                                    </tr>
-                                    <?php    }?>
-                                </tbody>
-                            </table>
+<?php
+                                                            } elseif ($list->active == '2') {
+                                                        
+                                                            ?>
+                                                            <a href="<?php echo base_url('courses/enable/') . $list->id; ?>"><button type="button" class="btn btn-primary" title="Enable"><i class="icon-check"></i></button></a>
+                                                        <?php }?>
+                                                        </td>
+                                                    </tr>
+                                                <?php    } ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>Course Name</th>
+                                                    <th>Category</th>
+                                                    <th>Course</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,6 +162,17 @@
     </div>
 </div>
 </div>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 <?php include('js.php'); ?>
 </body>
+
 </html>

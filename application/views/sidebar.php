@@ -32,9 +32,9 @@
                 <li>
                     <a href="#Blog" class="has-arrow"><i class="icon-globe"></i><span>Blog</span></a>
                     <ul>
-                        <li><a href="blog-post.php">New Post</a></li>
-                        <li><a href="blog-list.php">Blog List</a></li>
-                        <li><a href="blog-details.html">Blog Detail</a></li>
+                        <li><a href="<?php echo base_url('new-blog');?>">New Blog</a></li>
+                        <li><a href="<?php echo base_url('blog-category');?>">Category</a></li>
+                        <li><a href="<?php echo base_url('blog-list');?>">Blog List</a></li>
                     </ul>
                 </li>
                 <li class="heading">Support</li>
